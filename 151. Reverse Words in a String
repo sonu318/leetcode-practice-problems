@@ -1,0 +1,27 @@
+class Solution {
+    public String reverseWords(String s) {
+        s = s.trim();
+
+        // Split the string into words
+        String[] words = s.split("\\s+"); 
+
+        // Create a stack to store words
+        Stack<String> stack = new Stack<>();
+
+        // Push words onto the stack
+        for (String word : words) {
+            stack.push(word);
+        }
+
+        // Pop words from the stack and build the reversed string
+        StringBuilder reversedString = new StringBuilder();
+        while (!stack.isEmpty()) {
+            reversedString.append(stack.pop());
+            if (!stack.isEmpty()) {
+                reversedString.append(" "); 
+            }
+        }
+
+        return reversedString.toString();
+    }
+}
