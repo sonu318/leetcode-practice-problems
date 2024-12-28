@@ -1,0 +1,24 @@
+class Solution {
+    public String frequencySort(String s) {
+        Map<Character, Integer> frequencyMap = new HashMap<>();
+        for (char c : s.toCharArray()) {
+            frequencyMap.put(c, frequencyMap.getOrDefault(c, 0) + 1);
+        }
+
+        // Create a list of entries and sort by frequency in descending order
+        List<Map.Entry<Character, Integer>> list = new ArrayList<>(frequencyMap.entrySet());
+        list.sort((a, b) -> b.getValue() - a.getValue()); 
+
+        // Build the sorted string
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<Character, Integer> entry : list) {
+            char c = entry.getKey();
+            int freq = entry.getValue();
+            for (int i = 0; i < freq; i++) {
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
+    }
+}
